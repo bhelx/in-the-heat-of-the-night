@@ -58,8 +58,8 @@ function writeHeatMap () {
 function initialize() {
 
   var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(29.9728, -90.0590),
+    zoom: 13,
+    center: new google.maps.LatLng(29.953611866615528, -90.0817357447147),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: false,
     scrollwheel: true,
@@ -71,7 +71,7 @@ function initialize() {
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  heatmap = new HeatmapOverlay(map, { radius: 10, visible: true, opacity: 60 });
+  heatmap = new HeatmapOverlay(map, { radius: 10, visible: true, opacity: 40 });
 
   $('#map-canvas').spin('modal');
 
