@@ -52,7 +52,7 @@ function writeHeatMap () {
   });
 
   $("#spin_modal_overlay").remove();
-  heatmap.setDataSet({ max: 5, data: crimes });
+  heatmap.setDataSet({ max: 2, data: crimes });
 }
 
 function initialize() {
@@ -89,13 +89,11 @@ function initialize() {
         $types.append('<input type="radio" name="crime-type" value="'+type+'">'+type);
       });
 
-      $('input[name="crime-type"]').click(function () {
-        writeHeatMap();
-      });
+      $('input[name="crime-type"]').click(writeHeatMap);
 
       crimeData = data;
 
-      writeHeatMap();
+      google.maps.event.addListenerOnce(map, "idle", writeHeatMap);
     }
   });
 
