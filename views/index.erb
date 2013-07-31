@@ -51,9 +51,7 @@ function initialize() {
         };
       });
 
-      google.maps.event.addListenerOnce(map, "idle", function(){
-        heatmap.setDataSet({ max: 5, data: crimes });
-      });
+      heatmap.setDataSet({ max: 5, data: crimes });
     }
   });
 
