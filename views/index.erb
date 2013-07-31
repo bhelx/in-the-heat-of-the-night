@@ -7,19 +7,22 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
   </head>
   <body>
-    <div id="filters">
-      <fieldset>
-        <legend>Crime Type</legend>
-        <div class="crime-types">
-          <input type="radio" name="crime-type" value="All" checked>All</input>
-        </div>
-      </fieldset>
+    <div class="content">
+      <div id="filters">
+        <fieldset>
+          <legend>Crime Type</legend>
+          <div class="crime-types">
+            <input type="radio" name="crime-type" value="All" checked>All</input>
+          </div>
+        </fieldset>
+      </div>
+      <div id="map-canvas"></div>
     </div>
-    <div id="map-canvas"></div>
 
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="js/spin.min.js"></script>
     <script src="js/heatmap.js"></script>
     <script src="js/heatmap-gmaps.js"></script>
 
@@ -48,8 +51,8 @@ function writeHeatMap () {
     }
   });
 
+  $("#spin_modal_overlay").remove();
   heatmap.setDataSet({ max: 5, data: crimes });
-
 }
 
 function initialize() {
@@ -70,7 +73,9 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   heatmap = new HeatmapOverlay(map, { radius: 10, visible: true, opacity: 60 });
 
- $.ajax({
+  $('#map-canvas').spin('modal');
+
+  $.ajax({
     type: "GET",
     dataType: "json",
     url: "/data/spot_crime.json",
