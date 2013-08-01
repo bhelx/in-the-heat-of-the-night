@@ -11,3 +11,5 @@ Borrowed style from here: http://apt.serz.biz
 ## Contributing
 
 I will buy you one beer of your choice per merged pull request
+
+# fuck u
