@@ -10,6 +10,3 @@ Borrowed style from here: http://apt.serz.biz
 
 [MIT](http://opensource.org/licenses/MIT)
 
-## Contributing
-
-I will buy you one beer of your choice per merged pull request
