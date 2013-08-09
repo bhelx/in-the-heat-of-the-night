@@ -6,5 +6,5 @@ Prefered steps for contributing:
 
 1. Fork the repo
 2. Create an appropriately named branch for the work to be done
-4. Send Pull Request from said branch to this repo's master branch
+3. Send Pull Request from said branch to this repo's master branch
 
