@@ -1,159 +1,47 @@
+html {
+  background: #24292D url('/images/background.png') repeat;
+}
+
 body {
-  box-shadow: 0 0 2px rgba(100,100,100,0.1);
-  border-radius: 3px;
-  border: 1px solid #DDD;
-  background: white;
+  box-shadow: 0 0 3px rgba(25, 25, 25, 0.25);
+  border: 1px solid #1B1C1D;
   margin: 3em;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 85%;
-}
-
-.ui-slider {
-  box-shadow: 0 1px 1px white;
-  border-radius: 0.65em;
-  border: 1px solid #E5E5E5;
-  border-top-color: #CCC;
-  border-bottom-color: #DDD;
-  background: white;
-  height: 0.5em;
-  margin: 1em 8px;
-  position: relative;
-}
-
-.ui-slider-range {
-  border: 1px solid #206392;
-  background: #3486C0;
-  background: -moz-linear-gradient(#3891D1, #2F78AB);
-  background: -webkit-gradient(linear, center top, center bottom, from(#3891D1), to(#2F78AB));
-  height: 100%;
-  position: absolute;
-}
-
-.ui-slider-handle {
-  box-shadow: 0 0 1px white inset, 0 1px 2px rgba(50, 50, 50, 0.25);
-  border-radius: 2px;
-  border: 1px solid #CCC;
-  border-bottom-color: #BBB;
-  background: #F4F4F4;
-  background: -moz-linear-gradient(#FFF, #EEE);
-  background: -webkit-gradient(linear, center top, center bottom, from(#FFF), to(#EEE));
-  text-align: center;
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
-  margin-top: -9px;
-  margin-left: -9px;
-  position: absolute;
-  top: 50%;
-}
-
-.ui-slider-handle:focus {
-  outline: none;
-}
-
-.ui-slider-handle:after {
-  content: '';
-  background: url('/images/handle.png') no-repeat center;
-  width: 8px;
-  height: 9px;
-  display: inline-block;
-}
-
-.hidden {
-  display: none;
-}
-
-.apartment-info {
-  width: 300px;
-}
-
-.title {
-  text-decoration: none;
-}
-
-.price {
-  font-size: xx-large;
-}
-
-.posted {
-  display: inline-block;
-}
-
-.beds {
-  font-size: xx-large;
-  float: right;
-  margin-right: 0.5em;
-}
-
-.low-price {
-  color: green;
-}
-
-.high-price {
-  color: red;
+  font-size: 75%;
 }
 
 #filters {
-  box-shadow: 0 0 1px white inset, 0 1px 2px rgba(200,200,200,0.5);
-  border-radius: 3px 0 0;
-  border-bottom: 1px solid #CCC;
-  background: #FAFAFA;
-  background: -moz-linear-gradient(#FAFAFA, #F3F3F3);
-  background: -webkit-gradient(linear, center top, center bottom, from(#FAFAFA), to(#F3F3F3));
-  padding: 1em;
-  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(83, 85, 88, 0.5), 0 2px 3px rgba(0,0,0,0.35);
+  border: none;
+  background-color: #373B42;
+  color: #FFF;
+  text-shadow: 0 2px rgba(0,0,0,0.35);
+  padding: 1.5em;
+  margin: 0;
   position: relative;
   z-index: 1;
 }
 
-#filters fieldset {
-  border: none;
-  font-size: 85%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+#filters legend {
+  font-weight: bold;
   float: left;
 }
 
-#filters fieldset + fieldset {
-  margin-left: 2.375%;
-}
-
-#filters legend {
-  font-weight: bold;
-  text-shadow: 0 1px white;
-  padding: 0;
+#filters legend::after {
+  content: '';
+  border-right: 1px solid #272727;
+  border-left: 1px solid rgba(83, 85, 88, 0.5);
+  height: 1.5em;
+  margin-left: 1em;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .crime-types input {
-  display: inline;
-  margin: 0 10px;
+  margin: 0 1em;
 }
-
-/* for later...
-
-#filters input {
-  outline: 4px solid #EAEAEA;
-  border: 1px solid #DDD;
-  border-bottom-color: #CCC;
-  font-size: 100%;
-  text-align: center;
-  width: 4ch;
-  padding: 0.25em;
-}
-
-#filters input.min {
-  margin-left: 5px;
-  float: left;
-}
-
-#filters input.max {
-  margin-right: 5px;
-  float: right;
-}
-
-*/
 
 #map-canvas {
+  background: rgba(0,0,0,0.25);
   height: 40em;
 }
