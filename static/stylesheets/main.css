@@ -38,8 +38,19 @@ body {
   display: inline-block;
 }
 
+.crime-types {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.crime-types li {
+  margin-right: 1em;
+  float: left;
+}
+
 .crime-types input {
-  margin: 0 1em;
+  margin: 0 1ex;
 }
 
 #map-canvas {
