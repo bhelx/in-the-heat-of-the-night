@@ -46,22 +46,26 @@ body {
 #filters legend {
   font-weight: bold;
   float: left;
-}
-
-#filters legend::after {
-  content: '';
-  border-right: 1px solid #272727;
-  border-left: 1px solid rgba(83, 85, 88, 0.5);
-  height: 2em;
-  margin-left: 1em;
-  vertical-align: middle;
-  display: inline-block;
+  margin-right: 1em;
 }
 
 .crime-types {
+  border-left: 1px solid rgba(83, 85, 88, 0.5);
   list-style: none;
-  padding: 0;
+  padding: 0 0 0 1em;
   margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.crime-types::after {
+  content: '';
+  border-left: 1px solid #272727;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .crime-types li {
@@ -70,7 +74,7 @@ body {
 }
 
 .crime-types input {
-  margin: 0 1ex;
+  margin-right: 1ex;
 }
 
 #map-canvas {
