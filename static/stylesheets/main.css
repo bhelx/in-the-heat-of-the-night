@@ -1,3 +1,7 @@
+html. body {
+  height: 100%;
+}
+
 html {
   background: #24292D url('/images/background.png') repeat;
 }
@@ -12,13 +16,19 @@ body {
 
 .page-header {
   text-align: center;
-  margin: 1.5em 0 0.5em;
+  margin: 1em 0;
 }
 
 .page-content {
   box-shadow: 0 0 3px rgba(25, 25, 25, 0.25);
   border: 1px solid #1B1C1D;
-  margin: 0 3em 3em;
+  margin: 0 2em 2em;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 7em;
+  overflow: hidden;
 }
 
 #filters {
@@ -66,10 +76,5 @@ body {
 #map-canvas {
   background-color: rgba(0,0,0,0.25);
   text-shadow: none;
-  margin: -4px 1px 0 1px;
-  position: fixed !important;
-  left: 3em;
-  right: 3em;
-  top: 8em;
-  bottom: 3em;
+  height: 100%;
 }
