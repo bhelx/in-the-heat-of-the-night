@@ -12,7 +12,7 @@ body {
 
 .page-header {
   text-align: center;
-  margin: 2em 0 0.5em;
+  margin: 1.5em 0 0.5em;
 }
 
 .page-content {
@@ -64,5 +64,10 @@ body {
 
 #map-canvas {
   background-color: rgba(0,0,0,0.25);
-  height: 40em;
+  margin: -4px 1px 0 1px;
+  position: fixed !important;
+  left: 3em;
+  right: 3em;
+  top: 8em;
+  bottom: 3em;
 }
