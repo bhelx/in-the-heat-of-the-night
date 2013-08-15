@@ -26,6 +26,7 @@ body {
   border: none;
   border-bottom: 1px solid #1B1C1D;
   background-color: #373B42;
+  line-height: 2em;
   padding: 1.5em;
   margin: 0;
   position: relative;
@@ -41,7 +42,7 @@ body {
   content: '';
   border-right: 1px solid #272727;
   border-left: 1px solid rgba(83, 85, 88, 0.5);
-  height: 1.5em;
+  height: 2em;
   margin-left: 1em;
   vertical-align: middle;
   display: inline-block;
