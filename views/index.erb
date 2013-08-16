@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Crime Heatmap</title>
+    <title>NOLA Crime Heatmap</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <link href="/images/favicon.png" rel="shortcut icon" type="image/png" />
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
   </head>
   <body>
-    <div class="content">
-      <div id="filters">
-        <fieldset>
-          <legend>Crime Type</legend>
-          <div class="crime-types">
-            <input type="radio" name="crime-type" value="All" checked>All</input>
-          </div>
-        </fieldset>
-      </div>
+    <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
+    <div class='page-content'>
+      <fieldset id="filters">
+        <legend>Crime Type</legend>
+        <ul class="crime-types">
+          <li>
+            <label><input type="radio" name="crime-type" value="All" checked />All</label>
+          </li>
+        </ul>
+      </fieldset>
       <div id="map-canvas"></div>
     </div>
 
@@ -87,7 +89,7 @@ function initialize() {
 
       var $types = $('.crime-types');
       types.forEach(function (type) {
-        $types.append('<input type="radio" name="crime-type" value="'+type+'">'+type);
+        $types.append('<li><label><input type="radio" name="crime-type" value="'+type+'">'+type+'</label></li>');
       });
 
       $('input[name="crime-type"]').click(writeHeatMap);
