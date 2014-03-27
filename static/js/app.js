@@ -9,6 +9,8 @@ function unique(array){
 function writeHeatMap (data) {
   var googleData = toGoogleData(data);
 
+  if (heatmap) heatmap.setMap(null);
+
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: googleData,
     radius: 20,
