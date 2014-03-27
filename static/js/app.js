@@ -17,7 +17,6 @@ function writeHeatMap (data) {
   });
   heatmap.setMap(map);
 
-
   $("#spin_modal_overlay").remove();
 }
 
