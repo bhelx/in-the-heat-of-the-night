@@ -15,7 +15,7 @@ function writeHeatMap (data) {
     data: googleData,
     radius: 20,
     opacity: 0.5,
-    maxIntensity: 10
+    maxIntensity: 15
   });
   heatmap.setMap(map);
 
