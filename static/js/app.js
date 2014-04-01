@@ -38,7 +38,7 @@ function handleData(data) {
 
   var $types = $('.crime-filter-types');
   types.forEach(function (type) {
-    $types.append('<li class="crime-filter-type"><label><input class="crime-filter-type-input" type="radio" name="crime-filter-type" value="'+type+'">'+type+'</label></li>');
+    $types.append('<li class="crime-filter-type"><label><input class="crime-filter-type-input" type="radio" name="crime-type" value="'+type+'">'+type+'</label></li>');
   });
 
   $('input[name="crime-type"]').click(writeHeatMap);
