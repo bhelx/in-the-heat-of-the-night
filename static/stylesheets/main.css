@@ -64,12 +64,12 @@ body {
   bottom: 0;
 }
 
-.filter-type {
+.crime-filter-type {
   margin-right: 1em;
   float: left;
 }
 
-.filter-type-input {
+.crime-filter-type-input {
   margin-right: 1ex;
 }
 
