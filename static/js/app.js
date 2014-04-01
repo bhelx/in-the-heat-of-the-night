@@ -36,9 +36,9 @@ function handleData(data) {
     return $.trim(crime.cname);
   }));
 
-  var $types = $('.crime-types');
+  var $types = $('.crime-filter-types');
   types.forEach(function (type) {
-    $types.append('<li><label><input type="radio" name="crime-type" value="'+type+'">'+type+'</label></li>');
+    $types.append('<li class="filter-type"><label><input class="filter-type-input" type="radio" name="crime-type" value="'+type+'">'+type+'</label></li>');
   });
 
   $('input[name="crime-type"]').click(writeHeatMap);
@@ -78,9 +78,9 @@ function initialize() {
     disableDoubleClickZoom: false
   };
 
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  map = new google.maps.Map(document.querySelector('.heatmap-canvas'), mapOptions);
 
-  $('#map-canvas').spin('modal');
+  $('.heatmap-canvas').spin('modal');
 
   fetchCrimeData(handleData);
 

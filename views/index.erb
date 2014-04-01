@@ -10,15 +10,18 @@
   <body>
     <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
     <div class='page-content'>
-      <fieldset id='filters'>
-        <legend>Crime Type</legend>
-        <ul class='crime-types'>
-          <li>
-            <label><input type='radio' name='crime-type' value='All' checked />All</label>
+      <fieldset class='crime-filter'>
+        <legend class='crime-filter-legend'>Crime Type</legend>
+        <ul class='crime-filter-types'>
+          <li class='filter-type'>
+            <label>
+              <input class='filter-type-input' type='radio' name='crime-filter-type' value='All' checked />
+              All
+            </label>
           </li>
         </ul>
       </fieldset>
-      <div id='map-canvas'></div>
+      <div class='heatmap-canvas'></div>
     </div>
 
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization'></script>
