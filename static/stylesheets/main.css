@@ -27,7 +27,7 @@ body {
   overflow: hidden;
 }
 
-#filters {
+.crime-filter {
   box-shadow: inset 0 1px 1px rgba(96, 98, 102, 0.35), 0 3px 3px rgba(0,0,0,0.35);
   border: none;
   border-bottom: 1px solid #1B1C1D;
@@ -39,13 +39,13 @@ body {
   z-index: 1;
 }
 
-#filters legend {
+.crime-filter-legend {
   font-weight: bold;
   float: left;
   margin-right: 1em;
 }
 
-.crime-types {
+.crime-filter-types {
   border-left: 1px solid rgba(83, 85, 88, 0.5);
   list-style: none;
   padding: 0 0 0 1em;
@@ -54,7 +54,7 @@ body {
   overflow: hidden;
 }
 
-.crime-types::after {
+.crime-filter-types::after {
   content: '';
   border-left: 1px solid #272727;
   height: 100%;
@@ -64,16 +64,16 @@ body {
   bottom: 0;
 }
 
-.crime-types li {
+.crime-filter-type {
   margin-right: 1em;
   float: left;
 }
 
-.crime-types input {
+.crime-filter-type-input {
   margin-right: 1ex;
 }
 
-#map-canvas {
+.heatmap-canvas {
   background-color: rgba(0,0,0,0.25);
   text-shadow: none;
   height: 100%;
