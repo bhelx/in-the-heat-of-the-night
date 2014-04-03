@@ -26,7 +26,7 @@ function fetchCrimeData(cb) {
   $.ajax({
     type: "GET",
     dataType: "json",
-    url: "/data/spot_crime.json",
+    url: "/spot_crime",
     success: cb
   });
 }

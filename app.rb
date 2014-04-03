@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/assetpack'
+require 'json'
 
 if development?
   require 'sinatra/reloader'
@@ -24,6 +25,12 @@ assets {
 
 set :public_folder, File.dirname(__FILE__) + '/static'
 
+spot_crime = File.read(File.dirname(__FILE__) + '/data/spot_crime.json')
+
 get '/' do
   erb :index
+end
+
+get '/spot_crime' do
+  spot_crime
 end
