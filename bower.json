@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "NOLA Crime Heatmap",
+  "devDependencies": {
+    "angular": "~1.2.15"
+  }
+}
