@@ -1,6 +1,15 @@
 require 'sinatra'
 require 'sinatra/assetpack'
 
+if development?
+  require 'sinatra/reloader'
+  require 'pry'
+end
+
+configure :development do
+  register Sinatra::Reloader
+end
+
 assets {
   serve '/css',    { :from => 'assets/css' }
   serve '/js',     { :from => 'assets/js' }
