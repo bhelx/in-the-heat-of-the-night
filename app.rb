@@ -23,6 +23,8 @@ assets {
   js_compression  :uglify
 }
 
+set :scss, { :load_paths => [ "assets/css" ] }
+
 spot_crime = File.read(File.dirname(__FILE__) + '/data/spot_crime.json')
 
 get '/' do

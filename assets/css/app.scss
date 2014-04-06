@@ -1,3 +1,5 @@
+@import 'bourbon/bourbon';
+
 html {
   background: #24292D url('/images/background.png') repeat;
 }
@@ -19,6 +21,8 @@ body {
   box-shadow: 0 0 3px rgba(25, 25, 25, 0.25);
   border: 1px solid #1B1C1D;
   margin: 0 2em 2em;
+  @include display(flex);
+  @include flex-direction(column);
   position: absolute;
   left: 0;
   right: 0;
@@ -100,9 +104,18 @@ body {
   background-color: rgba(0,0,0,0.25);
   text-shadow: none;
   height: 100%;
+  @include flex(1);
 }
 
-@media only screen and (max-width: 30em) {
+@media only screen and (max-width: 40em) {
+  .page-header {
+    margin: 0.5em 0;
+  }
+
+  .page-content {
+    top: 5em;
+  }
+
   .crime-filter-legend::after {
     content: '';
     border-right: 1px solid #272727;

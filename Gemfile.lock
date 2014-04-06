@@ -2,8 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.6.0)
-    bourbon (3.1.8)
-      sass (>= 3.2.0)
+    bourbon (3.2.0.beta.2)
+      sass (>= 3.3.0.rc.2)
       thor
     coderay (1.1.0)
     daemons (1.1.9)
@@ -59,7 +59,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bourbon
+  bourbon (~> 3.2.0.beta.2)
   pry
   pry-nav
   sass
