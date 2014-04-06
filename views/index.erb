@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='initial-scale=1.0, user-scalable=no' />
@@ -10,26 +10,37 @@
     <title>NOLA Crime Heatmap</title>
     <link href='/images/favicon.png' rel='shortcut icon' type='image/png' />
     <%= css :app %>
+    <script src='//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization'></script>
+    <script src='//code.jquery.com/jquery-1.10.1.min.js'></script>
+    <!-- TODO: load from cdn on production -->
+    <script src='/bower_components/angular/angular.min.js'></script>
+    <script src='/bower_components/lodash/dist/lodash.underscore.min.js'></script>
   </head>
   <body>
     <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
-    <div class='page-content'>
+
+    <div ng-controller='CrimeViewerCtrl' class='page-content'>
       <fieldset class='crime-filter'>
         <legend class='crime-filter-legend'>Crime Type</legend>
         <ul class='crime-filter-types'>
           <li class='crime-filter-type'>
             <label>
-              <input class='crime-filter-type-input' type='radio' name='crime-type' value='All' checked />
+              <input ng-model='options.crimeType' class='crime-filter-type-input' type='radio' name='crime-type' value='All' />
               All
+            </label>
+          </li>
+
+          <li ng-cloak ng-repeat='crimeType in crimeData.crimeTypes' class='crime-filter-type'>
+            <label>
+              <input ng-model='options.crimeType' class='crime-filter-type-input' type='radio' name='crime-type' value='{{crimeType}}' />
+              {{crimeType}}
             </label>
           </li>
         </ul>
       </fieldset>
-      <div class='heatmap-canvas'></div>
+      <div class='heatmap-canvas' heatmap map-points='crimeData.mapPoints'></div>
     </div>
 
-    <script src='//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization'></script>
-    <script src='//code.jquery.com/jquery-1.10.1.min.js'></script>
     <%= js :app %>
   </body>
 </html>

@@ -2,6 +2,8 @@
   "private": true,
   "name": "NOLA Crime Heatmap",
   "devDependencies": {
-    "angular": "~1.2.15"
+    "angular": "~1.2.15",
+    "lodash": "~2.4.1",
+    "angular-mocks": "~1.2.16"
   }
 }

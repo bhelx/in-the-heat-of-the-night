@@ -17,13 +17,11 @@ assets {
   serve '/images', { :from => 'assets/images' }
 
   css :app, ['css/app.css']
-  js  :app, ['js/spin.min.js', 'js/app.js']
+  js  :app, ['js/app.js']
 
   css_compression :yui
   js_compression  :uglify
 }
-
-set :public_folder, File.dirname(__FILE__) + '/static'
 
 spot_crime = File.read(File.dirname(__FILE__) + '/data/spot_crime.json')
 

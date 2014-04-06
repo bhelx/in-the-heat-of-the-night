@@ -1,90 +1,104 @@
-var map, heatmap, crimeData, googleData;
+angular.module('app', [])
 
-function unique(array){
-  return array.filter(function(el,index,arr){
-    return index == arr.indexOf(el);
-  });
-}
-
-function writeHeatMap (data) {
-  var googleData = toGoogleData(data);
-
-  if (heatmap) heatmap.setMap(null);
-
-  heatmap = new google.maps.visualization.HeatmapLayer({
-    data: googleData,
-    radius: 20,
-    opacity: 0.5,
-    maxIntensity: 15
-  });
-  heatmap.setMap(map);
-
-  $("#spin_modal_overlay").remove();
-}
-
-function fetchCrimeData(cb) {
-  $.ajax({
-    type: "GET",
-    dataType: "json",
-    url: "/spot_crime",
-    success: cb
-  });
-}
-
-function handleData(data) {
-  var types = unique($.map(data.crimeList, function (crime) {
-    return $.trim(crime.cname);
-  }));
-
-  var $types = $('.crime-filter-types');
-  types.forEach(function (type) {
-    $types.append('<li class="crime-filter-type"><label><input class="crime-filter-type-input" type="radio" name="crime-type" value="'+type+'">'+type+'</label></li>');
-  });
-
-  $('input[name="crime-type"]').click(writeHeatMap);
-
-  crimeData = data;
-
-  writeHeatMap();
-}
-
-/**
- * Turns our crime data into google latlngs
- */
-function toGoogleData(data) {
-  var filter = $('input[name="crime-type"]:checked').val();
-  if (filter == "All") filter = null;
-
-  return crimes = $.map(crimeData.crimeList, function (crime) {
-    if (!filter || filter == crime.cname) {
-      return new google.maps.LatLng(parseFloat(crime.clatitude), parseFloat(crime.clongitude));
-    }
-  });
-}
-
-function initialize() {
-
-  var mapOptions = {
-    zoom: 13,
-    center: new google.maps.LatLng(29.953611866615528, -90.0817357447147),
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    disableDefaultUI: true,
-    scrollwheel: true,
-    zoomControl: true,
-    draggable: true,
-    navigationControl: true,
-    mapTypeControl: false,
-    scaleControl: true,
-    disableDoubleClickZoom: false
+.controller('CrimeViewerCtrl', ['$scope', '$q', 'crimeData', function($scope, $q, crimeData) {
+  $scope.crimeData = crimeData;
+  $scope.options   = {
+    crimeType: 'All'
   };
 
-  map = new google.maps.Map(document.querySelector('.heatmap-canvas'), mapOptions);
+  $scope.$watch('options.crimeType', function(value) {
+    if(value === 'All') {
+      crimeData.filteredTypes = [];
+      crimeData.updateMapPoints();
+    }
+    else {
+      crimeData.filteredTypes = [value];
+      crimeData.updateMapPoints();
+    }
+  });
 
-  $('.heatmap-canvas').spin('modal');
+  crimeData.fetch(); // TODO: spinner
+}])
 
-  fetchCrimeData(handleData);
+.service('crimeData', ['$http', '$q', function($http, $q) {
+  var crimeData = this;
 
-}
+  this.incidents     = [];
+  this.filteredTypes = [];
+  this.mapPoints     = [];
 
-google.maps.event.addDomListener(window, 'load', initialize);
+  this.fetch = function() {
+    var deferred = $q.defer();
 
+    // TODO: handle fetch error
+    $http.get('/spot_crime').success(function(response) {
+      crimeData.incidents  = response.crimeList;
+      crimeData.crimeTypes = crimeData.getCrimeTypes();
+      crimeData.updateMapPoints();
+      deferred.resolve();
+    });
+
+    return deferred.promise;
+  };
+
+  this.getCrimeTypes = function() {
+    var crimeTypes = _.map(crimeData.incidents, function(incident) {
+      return incident.cname; // TODO: trim
+    });
+
+    return _.uniq(crimeTypes);
+  };
+
+  this.updateMapPoints = function() {
+    var points = _.map(crimeData.incidents, function(incident) {
+      if(!crimeData.filteredTypes.length || _.contains(crimeData.filteredTypes, incident.cname)) {
+        return new google.maps.LatLng(parseFloat(incident.clatitude), parseFloat(incident.clongitude));
+      }
+    });
+
+    crimeData.mapPoints = _.compact(points);
+
+    return this;
+  };
+}])
+
+.directive('heatmap', function() {
+  return {
+    scope: {
+      mapPoints: '='
+    },
+    link: function(scope, element, attributes) {
+      var mapOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(29.953611866615528, -90.0817357447147),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        scrollwheel: true,
+        zoomControl: true,
+        draggable: true,
+        navigationControl: true,
+        mapTypeControl: false,
+        scaleControl: true,
+        disableDoubleClickZoom: false
+      };
+
+      var map = new google.maps.Map(element[0], mapOptions),
+          heatmapLayer;
+
+      scope.$watch('mapPoints', function(value) {
+        if (heatmapLayer) {
+          heatmapLayer.setMap(null);
+        }
+
+        heatmapLayer = new google.maps.visualization.HeatmapLayer({
+          data: scope.mapPoints,
+          radius: 20,
+          opacity: 0.5,
+          maxIntensity: 15
+        });
+
+        heatmapLayer.setMap(map);
+      });
+    }
+  };
+});
