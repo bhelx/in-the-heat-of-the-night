@@ -18,7 +18,7 @@ describe('crime viewer controller', function() {
   });
 
   it('should update the filtered crime types array when state.crimeType is reset (filter disabled)', function() {
-    scope.state.crimeType = 'All';
+    scope.state.crimeType = null;
     scope.$apply();
 
     expect(crimeData.filteredTypes).toEqual([]);

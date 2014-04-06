@@ -4,17 +4,17 @@ angular.module('app.controllers', [])
   $scope.crimeData = crimeData;
 
   $scope.state = {
-    crimeType: 'All',
+    crimeType: '',
     loading: true
   };
 
   $scope.$watch('state.crimeType', function(value) {
-    if(value === 'All') {
-      crimeData.filteredTypes = [];
+    if(value) {
+      crimeData.filteredTypes = [value];
       crimeData.updateMapPoints();
     }
     else {
-      crimeData.filteredTypes = [value];
+      crimeData.filteredTypes = [];
       crimeData.updateMapPoints();
     }
   });

@@ -64,7 +64,7 @@ body {
   margin-right: 1em;
 }
 
-.crime-filter-types {
+.crime-filter-list {
   border-left: 1px solid rgba(83, 85, 88, 0.5);
   list-style: none;
   padding: 0 0 0 1em;
@@ -73,7 +73,7 @@ body {
   overflow: hidden;
 }
 
-.crime-filter-types::after {
+.crime-filter-list::after {
   content: '';
   border-left: 1px solid #272727;
   height: 100%;
@@ -83,17 +83,41 @@ body {
   bottom: 0;
 }
 
-.crime-filter-type {
+.crime-filter-list-item {
   margin-right: 1em;
   float: left;
 }
 
-.crime-filter-type-input {
+.crime-filter-list-radio {
   margin-right: 1ex;
+}
+
+.crime-filter-dropdown {
+  display: none;
 }
 
 .heatmap-canvas {
   background-color: rgba(0,0,0,0.25);
   text-shadow: none;
   height: 100%;
+}
+
+@media only screen and (max-width: 30em) {
+  .crime-filter-legend::after {
+    content: '';
+    border-right: 1px solid #272727;
+    border-left: 1px solid rgba(83, 85, 88, 0.5);
+    margin-left: 1em;
+    height: 1.5em;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .crime-filter-list {
+    display: none;
+  }
+
+  .crime-filter-dropdown {
+    display: inline;
+  }
 }
