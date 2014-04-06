@@ -4,7 +4,8 @@
   "devDependencies": {
     "angular": "~1.2.15",
     "lodash": "~2.4.1",
-    "angular-mocks": "~1.2.16"
+    "angular-mocks": "~1.2.16",
+    "underscore.string": "~2.3.3"
   },
   "dependencies": {
     "angular-spinner": "~0.4.0",

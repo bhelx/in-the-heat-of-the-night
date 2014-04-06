@@ -23,7 +23,7 @@ angular.module('app.services', [])
 
   this.getCrimeTypes = function() {
     var crimeTypes = _.map(crimeData.incidents, function(incident) {
-      return incident.cname; // TODO: trim
+      return _.str.trim(incident.cname);
     });
 
     return _.uniq(crimeTypes);
