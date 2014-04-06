@@ -17,15 +17,15 @@ describe('crime viewer controller', function() {
     $httpBackend.whenGET('/spot_crime').respond([]);
   });
 
-  it('should update the filtered crime types array when options.crimeType is reset (filter disabled)', function() {
-    scope.options.crimeType = 'All';
+  it('should update the filtered crime types array when state.crimeType is reset (filter disabled)', function() {
+    scope.state.crimeType = 'All';
     scope.$apply();
 
     expect(crimeData.filteredTypes).toEqual([]);
   });
 
-  it('should update the filtered crime types array when options.crimeType is a specific value (filter enabled)', function() {
-    scope.options.crimeType = 'Assault';
+  it('should update the filtered crime types array when state.crimeType is a specific value (filter enabled)', function() {
+    scope.state.crimeType = 'Assault';
     scope.$apply();
 
     expect(crimeData.filteredTypes).toEqual(['Assault']);

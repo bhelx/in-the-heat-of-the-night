@@ -27,6 +27,25 @@ body {
   overflow: hidden;
 }
 
+.page-content.loading {
+  pointer-events: none;
+}
+
+.page-content.loading::before {
+  content: '';
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.page-content-spinner {
+  margin-top: 30px;
+}
+
 .crime-filter {
   box-shadow: inset 0 1px 1px rgba(96, 98, 102, 0.35), 0 3px 3px rgba(0,0,0,0.35);
   border: none;

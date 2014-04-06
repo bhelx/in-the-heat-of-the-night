@@ -15,33 +15,38 @@
     <!-- TODO: load from cdn on production -->
     <script src='/bower_components/angular/angular.min.js'></script>
     <script src='/bower_components/lodash/dist/lodash.underscore.min.js'></script>
+    <!-- END -->
+    <script src='/bower_components/spin.js/spin.js'></script>
+    <script src='/bower_components/angular-spinner/angular-spinner.min.js'></script>
   </head>
   <body>
     <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
 
-    <div ng-controller='CrimeViewerCtrl' class='page-content'>
+    <div ng-controller='CrimeViewerCtrl' ng-class='{loading: state.loading}' class='page-content'>
+      <span ng-if='state.loading' us-spinner='{{spinnerOptions}}'></span>
+
       <fieldset class='crime-filter'>
         <legend class='crime-filter-legend'>Crime Type</legend>
         <ul class='crime-filter-types'>
           <li class='crime-filter-type'>
             <label>
-              <input ng-model='options.crimeType' class='crime-filter-type-input' type='radio' name='crime-type' value='All' />
+              <input ng-model='state.crimeType' class='crime-filter-type-input' type='radio' name='crime-type' value='All' />
               All
             </label>
           </li>
 
           <li ng-cloak ng-repeat='crimeType in crimeData.crimeTypes' class='crime-filter-type'>
             <label>
-              <input ng-model='options.crimeType' class='crime-filter-type-input' type='radio' name='crime-type' value='{{crimeType}}' />
+              <input ng-model='state.crimeType' class='crime-filter-type-input' type='radio' name='crime-type' value='{{crimeType}}' />
               {{crimeType}}
             </label>
           </li>
         </ul>
       </fieldset>
+
       <div class='heatmap-canvas' heatmap map-points='crimeData.mapPoints'></div>
     </div>
 
     <%= js :app %>
   </body>
 </html>
-
