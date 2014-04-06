@@ -23,7 +23,8 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      
+      'assets/js/**/*conf.js',
+      'assets/js/test/e2e/*',
     ],
 
 
