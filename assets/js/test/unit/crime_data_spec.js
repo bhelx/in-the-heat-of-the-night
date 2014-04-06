@@ -1,7 +1,7 @@
 describe('crime data service', function() {
   var $httpBackend, crimeData;
 
-  beforeEach(module('app'));
+  beforeEach(module('app.services'));
 
   beforeEach(inject(function(_$httpBackend_, _crimeData_) {
     $httpBackend = _$httpBackend_;

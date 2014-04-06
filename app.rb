@@ -17,7 +17,7 @@ assets {
   serve '/images', { :from => 'assets/images' }
 
   css :app, ['css/app.css']
-  js  :app, ['js/app.js']
+  js  :app, ['js/app.js', 'js/controllers.js', 'js/services.js', 'js/directives.js']
 
   css_compression :yui
   js_compression  :uglify
