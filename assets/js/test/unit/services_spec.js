@@ -31,9 +31,9 @@ describe('crime data service', function() {
       crimeData.fetch().then(function() {
         var crimeTypes = crimeData.getCrimeTypes();
 
-        expect(crimeTypes[0]).toEqual('Assault');
-        expect(crimeTypes[1]).toEqual('Burglary');
-        expect(crimeTypes[2]).toEqual('Theft');
+        expect(crimeTypes[0]).toBe('Assault');
+        expect(crimeTypes[1]).toBe('Burglary');
+        expect(crimeTypes[2]).toBe('Theft');
       });
 
       $httpBackend.flush();
@@ -53,15 +53,15 @@ describe('crime data service', function() {
 
         var mapPoints = crimeData.mapPoints;
 
-        expect(mapPoints[0].lat()).toEqual(0);
-        expect(mapPoints[0].lng()).toEqual(0);
+        expect(mapPoints[0].lat()).toBe(0);
+        expect(mapPoints[0].lng()).toBe(0);
 
-        expect(mapPoints[1].lat()).toEqual(30);
-        expect(mapPoints[1].lng()).toEqual(-30);
+        expect(mapPoints[1].lat()).toBe(30);
+        expect(mapPoints[1].lng()).toBe(-30);
 
 
-        expect(mapPoints[2].lat()).toEqual(60);
-        expect(mapPoints[2].lng()).toEqual(-60);
+        expect(mapPoints[2].lat()).toBe(60);
+        expect(mapPoints[2].lng()).toBe(-60);
       });
 
       $httpBackend.flush();
@@ -80,9 +80,9 @@ describe('crime data service', function() {
 
         var mapPoints = crimeData.mapPoints;
 
-        expect(mapPoints.length).toEqual(1);
-        expect(mapPoints[0].lat()).toEqual(0);
-        expect(mapPoints[0].lng()).toEqual(0);
+        expect(mapPoints.length).toBe(1);
+        expect(mapPoints[0].lat()).toBe(0);
+        expect(mapPoints[0].lng()).toBe(0);
       });
 
       $httpBackend.flush();
