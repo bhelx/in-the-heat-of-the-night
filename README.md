@@ -6,7 +6,11 @@ This is an interactive heatmap for viewing New Orleans crime data.
 
 ## Setup
 
-Make sure you have Ruby and a Java runtime installed(the latter for YUI compressor, which the asset pipeline is configured to use). You'll also need node.js for running frontend tests.
+Make sure you have:
+- Ruby
+- node.js (for installing frontend packages and running tests)
+- Java runtime (for YUI compressor, which the asset pipeline is configured to use)
+- Courage and honor
 
 Install gems:
 
