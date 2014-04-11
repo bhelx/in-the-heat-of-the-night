@@ -32,5 +32,6 @@ get '/' do
 end
 
 get '/spot_crime' do
+  content_type :json
   spot_crime
 end
