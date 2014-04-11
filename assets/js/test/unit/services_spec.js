@@ -53,6 +53,8 @@ describe('crime data service', function() {
 
         var mapPoints = crimeData.mapPoints;
 
+        expect(mapPoints.length).toBe(3);
+
         expect(mapPoints[0].lat()).toBe(0);
         expect(mapPoints[0].lng()).toBe(0);
 
