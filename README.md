@@ -21,7 +21,7 @@ npm install -g karma
 npm install -g protractor
 ```
 
-Install and run [Bower](http://bower.io/) for local dev packages:
+Install and run [Bower](http://bower.io/):
 
 ```
 npm install -g bower

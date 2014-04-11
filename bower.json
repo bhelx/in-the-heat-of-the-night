@@ -1,14 +1,12 @@
 {
   "private": true,
   "name": "NOLA Crime Heatmap",
-  "devDependencies": {
-    "angular": "~1.2.15",
-    "lodash": "~2.4.1",
-    "angular-mocks": "~1.2.16",
-    "underscore.string": "~2.3.3"
-  },
   "dependencies": {
+    "angular": "~1.2.15",
+    "angular-mocks": "~1.2.16",
     "angular-spinner": "~0.4.0",
-    "spin.js": "~2.0.0"
+    "lodash": "~2.4.1",
+    "spin.js": "~2.0.0",
+    "underscore.string": "~2.3.3"
   }
 }
