@@ -9,7 +9,7 @@ angular.module('app.controllers', [])
   };
 
   $scope.config = {
-    crimeTypeOptions: [],
+    crimeTypeOptions: ['All'],
     spinnerOptions: {
       lines:      11,
       length:     23,
@@ -41,7 +41,7 @@ angular.module('app.controllers', [])
 
   // TODO: fetch error handling
   crimeData.fetch().then(function() {
-    $scope.config.crimeTypeOptions = crimeData.getCrimeTypes().concat('All');
+    $scope.config.crimeTypeOptions = $scope.config.crimeTypeOptions.concat(crimeData.getCrimeTypes());
     $scope.state.loading = false;
   });
 }]);
