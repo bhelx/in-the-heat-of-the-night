@@ -20,8 +20,8 @@
   <body>
     <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
 
-    <div ng-controller='CrimeViewerCtrl' ng-class='{loading: data.state.loading}' class='page-content'>
-      <span ng-if='data.state.loading' us-spinner='data.config.spinnerOptions'></span>
+    <div ng-controller='CrimeViewerCtrl' ng-class='{loading: state.loading}' class='page-content'>
+      <span ng-if='state.loading' us-spinner='config.spinnerOptions'></span>
 
       <fieldset class='crime-filter'>
         <legend class='crime-filter-legend'>Crime Type</legend>
@@ -29,20 +29,20 @@
         <ul class='crime-filter-list'>
           <li class='crime-filter-list-item'>
             <label>
-              <input ng-model='data.state.crimeType' class='crime-filter-list-radio' type='radio' name='crime-type' value='All' />
+              <input ng-model='state.crimeType' class='crime-filter-list-radio' type='radio' name='crime-type' value='All' />
               All
             </label>
           </li>
 
           <li ng-cloak ng-repeat='crimeType in crimeData.crimeTypes' class='crime-filter-list-item'>
             <label>
-              <input ng-model='data.state.crimeType' class='crime-filter-list-radio' type='radio' name='crime-type' value='{{crimeType}}' />
+              <input ng-model='state.crimeType' class='crime-filter-list-radio' type='radio' name='crime-type' value='{{crimeType}}' />
               {{crimeType}}
             </label>
           </li>
         </ul>
 
-        <select ng-model='data.state.crimeType' ng-options='crimeType for crimeType in data.config.crimeTypeOptions' class='crime-filter-dropdown'></select>
+        <select ng-model='state.crimeType' ng-options='crimeType for crimeType in config.crimeTypeOptions' class='crime-filter-dropdown'></select>
       </fieldset>
 
       <div class='heatmap-canvas' heatmap map-points='crimeData.mapPoints'></div>

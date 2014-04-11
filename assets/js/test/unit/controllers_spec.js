@@ -16,7 +16,7 @@ describe('crime viewer controller', function() {
   it('should update the filtered crime types array when filtered crime type is reset (filter disabled)', function() {
     $httpBackend.whenGET('/spot_crime').respond([]);
 
-    scope.data.state.crimeType = 'All';
+    scope.state.crimeType = 'All';
     scope.$digest();
 
     expect(crimeData.filteredTypes).toEqual([]);
@@ -25,7 +25,7 @@ describe('crime viewer controller', function() {
   it('should update the filtered crime types array when filtered crime type is set (filter enabled)', function() {
     $httpBackend.whenGET('/spot_crime').respond([]);
 
-    scope.data.state.crimeType = 'Assault';
+    scope.state.crimeType = 'Assault';
     scope.$digest();
 
     expect(crimeData.filteredTypes).toEqual(['Assault']);
@@ -40,14 +40,14 @@ describe('crime viewer controller', function() {
 
     $httpBackend.flush();
 
-    scope.data.state.crimeType = 'Assault';
+    scope.state.crimeType = 'Assault';
     scope.$digest();
 
     expect(crimeData.mapPoints.length).toBe(1);
     expect(crimeData.mapPoints[0].lat()).toBe(0);
     expect(crimeData.mapPoints[0].lng()).toBe(0);
 
-    scope.data.state.crimeType = 'Burglary';
+    scope.state.crimeType = 'Burglary';
     scope.$digest();
 
     expect(crimeData.mapPoints.length).toBe(2);
