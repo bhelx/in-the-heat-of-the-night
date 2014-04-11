@@ -18,7 +18,7 @@
     <script src='/bower_components/angular-spinner/angular-spinner.min.js'></script>
   </head>
   <body>
-    <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
+    <h1 class='page-header'><img class='page-header-logo' src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
 
     <div ng-controller='CrimeViewerCtrl' ng-class='{loading: state.loading}' class='page-content'>
       <span ng-if='state.loading' us-spinner='config.spinnerOptions'></span>
