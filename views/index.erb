@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='initial-scale=1.0, user-scalable=no' />
@@ -9,29 +9,45 @@
     <meta property='og:image' content='<%= "#{request.base_url}/images/og_image.png" %>' />
     <title>NOLA Crime Heatmap</title>
     <link href='/images/favicon.png' rel='shortcut icon' type='image/png' />
-    <link rel='stylesheet' type='text/css' href='stylesheets/main.css'>
+    <%= css :app %>
+    <script src='//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization'></script>
+    <script src='/bower_components/angular/angular.min.js'></script>
+    <script src='/bower_components/lodash/dist/lodash.underscore.min.js'></script>
+    <script src='/bower_components/underscore.string/dist/underscore.string.min.js'></script>
+    <script src='/bower_components/spin.js/spin.js'></script>
+    <script src='/bower_components/angular-spinner/angular-spinner.min.js'></script>
   </head>
   <body>
-    <h1 class='page-header'><img src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
-    <div class='page-content'>
+    <h1 class='page-header'><img class='page-header-logo' src='/images/logo.png' alt='NOLA Crime Heatmap' /></h1>
+
+    <div ng-controller='CrimeViewerCtrl' ng-class='{loading: state.loading}' class='page-content'>
+      <span ng-if='state.loading' us-spinner='config.spinnerOptions'></span>
+
       <fieldset class='crime-filter'>
         <legend class='crime-filter-legend'>Crime Type</legend>
-        <ul class='crime-filter-types'>
-          <li class='crime-filter-type'>
+
+        <ul class='crime-filter-list'>
+          <li class='crime-filter-list-item'>
             <label>
-              <input class='crime-filter-type-input' type='radio' name='crime-type' value='All' checked />
+              <input ng-model='state.crimeType' class='crime-filter-list-radio' type='radio' name='crime-type' value='All' />
               All
             </label>
           </li>
+
+          <li ng-cloak ng-repeat='crimeType in crimeData.crimeTypes' class='crime-filter-list-item'>
+            <label>
+              <input ng-model='state.crimeType' class='crime-filter-list-radio' type='radio' name='crime-type' value='{{crimeType}}' />
+              {{crimeType}}
+            </label>
+          </li>
         </ul>
+
+        <select ng-model='state.crimeType' ng-options='crimeType for crimeType in config.crimeTypeOptions' class='crime-filter-dropdown'></select>
       </fieldset>
-      <div class='heatmap-canvas'></div>
+
+      <div class='heatmap-canvas' heatmap map-points='crimeData.mapPoints'></div>
     </div>
 
-    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization'></script>
-    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
-    <script src='js/spin.min.js'></script>
-    <script src='js/app.js'></script>
+    <%= js :app %>
   </body>
 </html>
-
