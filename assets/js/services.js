@@ -11,8 +11,8 @@ angular.module('app.services', [])
     var deferred = $q.defer();
 
     // TODO: handle fetch error
-    $http.get('/spot_crime').success(function(response) {
-      crimeData.incidents  = response.crimeList;
+    $http.get('/calls_data').success(function(response) {
+      crimeData.incidents  = response.features;
       crimeData.crimeTypes = crimeData.getCrimeTypes();
       crimeData.updateMapPoints();
       deferred.resolve();
@@ -22,17 +22,20 @@ angular.module('app.services', [])
   };
 
   this.getCrimeTypes = function() {
-    var crimeTypes = _.map(crimeData.incidents, function(incident) {
-      return _.str.trim(incident.cname);
-    });
+    // var crimeTypes = _.map(crimeData.incidents, function(incident) {
+    //   return _.str.trim(incident.properties.TypeText);
+    // });
 
-    return _.uniq(crimeTypes);
+    //return _.uniq(crimeTypes);
+
+    // Return no filters for now
+    return [];
   };
 
   this.updateMapPoints = function() {
     var points = _.map(crimeData.incidents, function(incident) {
-      if(!crimeData.filteredTypes.length || _.contains(crimeData.filteredTypes, incident.cname)) {
-        return new google.maps.LatLng(parseFloat(incident.clatitude), parseFloat(incident.clongitude));
+      if(incident.geometry.coordinates.length && (!crimeData.filteredTypes.length || _.contains(crimeData.filteredTypes, incident.properties.typetext))) {
+        return new google.maps.LatLng(incident.geometry.coordinates[1], incident.geometry.coordinates[0]);
       }
     });
 

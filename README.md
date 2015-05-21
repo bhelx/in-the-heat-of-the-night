@@ -32,6 +32,20 @@ npm install -g bower
 bower install
 ```
 
+Fetching and loading new data:
+
+first you need the python requirements:
+
+```
+pip install -r requirements.txt
+```
+
+Then run the python script to pull and transform current data:
+
+```
+python nola_data_etl.py
+```
+
 Run the application:
 
 ```
