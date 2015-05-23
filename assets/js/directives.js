@@ -30,9 +30,9 @@ angular.module('app.directives', [])
 
         heatmapLayer = new google.maps.visualization.HeatmapLayer({
           data: scope.mapPoints,
-          radius: 20,
+          radius: 13,
           opacity: 0.5,
-          maxIntensity: 15
+          maxIntensity: 150
         });
 
         heatmapLayer.setMap(map);

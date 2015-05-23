@@ -25,13 +25,13 @@ assets {
 
 set :scss, { :load_paths => [ "assets/css" ] }
 
-spot_crime = File.read(File.dirname(__FILE__) + '/data/spot_crime.json')
+call_data = File.read(File.dirname(__FILE__) + '/data/calls-for-service_2015.geojson')
 
 get '/' do
   erb :index
 end
 
-get '/spot_crime' do
+get '/calls_data' do
   content_type :json
-  spot_crime
+  call_data
 end
