@@ -22,19 +22,18 @@ angular.module('app.services', [])
   };
 
   this.getCrimeTypes = function() {
-    // var crimeTypes = _.map(crimeData.incidents, function(incident) {
-    //   return _.str.trim(incident.properties.TypeText);
-    // });
+    var crimeTypes = _.map(crimeData.incidents, function(incident) {
+      return incident.properties.Categories;
+    });
 
-    //return _.uniq(crimeTypes);
-
-    // Return no filters for now
-    return [];
+    return _.uniq(_.flatten(crimeTypes));
   };
 
   this.updateMapPoints = function() {
+    // TODO - support more than one filter type
+    var filteredType = crimeData.filteredTypes[0];
     var points = _.map(crimeData.incidents, function(incident) {
-      if(incident.geometry.coordinates.length && (!crimeData.filteredTypes.length || _.contains(crimeData.filteredTypes, incident.properties.typetext))) {
+      if(incident.geometry.coordinates.length && (!filteredType || _.contains(incident.properties.Categories, filteredType))) {
         return new google.maps.LatLng(incident.geometry.coordinates[1], incident.geometry.coordinates[0]);
       }
     });
